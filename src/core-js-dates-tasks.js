@@ -36,9 +36,9 @@ function getTime(date) {
   function check(elem) {
     return elem < 10 ? `0${elem}` : elem;
   }
-  const hours = check(a.getUTCHours());
-  const minutes = check(a.getUTCMinutes());
-  const seconds = check(a.getUTCSeconds());
+  const hours = check(a.getHours());
+  const minutes = check(a.getMinutes());
+  const seconds = check(a.getSeconds());
   return `${hours}:${minutes}:${seconds}`;
 }
 
