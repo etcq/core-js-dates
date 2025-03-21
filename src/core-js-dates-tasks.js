@@ -36,9 +36,9 @@ function getTime(date) {
   function check(elem) {
     return elem < 10 ? `0${elem}` : elem;
   }
-  const hours = check(a.getHours());
-  const minutes = check(a.getMinutes());
-  const seconds = check(a.getSeconds());
+  const hours = check(a.getUTCHours());
+  const minutes = check(a.getUTCMinutes());
+  const seconds = check(a.getUTCSeconds());
   return `${hours}:${minutes}:${seconds}`;
 }
 
@@ -155,8 +155,17 @@ function getCountDaysOnPeriod(dateStart, dateEnd) {
  * '2024-02-02', { start: '2024-02-02', end: '2024-03-02' } => true
  * '2024-02-10', { start: '2024-02-02', end: '2024-03-02' } => true
  */
-function isDateInPeriod(/* date, period */) {
-  throw new Error('Not implemented');
+function isDateInPeriod(date, period) {
+  const formatedDate = new Date(date);
+  const formatedCurr = new Date(period.start);
+  const formatedEnd = new Date(period.end);
+  while (formatedCurr <= formatedEnd) {
+    if (Date.parse(formatedCurr) === Date.parse(formatedDate)) {
+      return true;
+    }
+    formatedCurr.setDate(formatedCurr.getDate() + 1);
+  }
+  return false;
 }
 
 /**
@@ -170,8 +179,24 @@ function isDateInPeriod(/* date, period */) {
  * '1999-01-05T02:20:00.000Z' => '1/5/1999, 2:20:00 AM'
  * '2010-12-15T22:59:00.000Z' => '12/15/2010, 10:59:00 PM'
  */
-function formatDate(/* date */) {
-  throw new Error('Not implemented');
+function formatDate(date) {
+  const x = new Date(date);
+  let postmeridiem = false;
+  let hours = '12';
+  const minutes =
+    x.getUTCMinutes() >= 10 ? x.getUTCMinutes() : `0${x.getUTCMinutes()}`;
+  const sec =
+    x.getUTCSeconds() >= 10 ? x.getUTCSeconds() : `0${x.getUTCSeconds()}`;
+  if (x.getUTCHours() >= 12) {
+    postmeridiem = true;
+    if (x.getUTCHours() > 12) {
+      hours = x.getUTCHours() - 12;
+    }
+  } else {
+    hours = x.getUTCHours();
+    postmeridiem = false;
+  }
+  return `${x.getMonth() + 1}/${x.getUTCDate()}/${x.getUTCFullYear()}, ${hours}:${minutes}:${sec} ${postmeridiem ? 'PM' : 'AM'}`;
 }
 
 /**
