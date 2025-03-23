@@ -260,12 +260,15 @@ function getWeekNumberByDate(date) {
  */
 function getNextFridayThe13th(date) {
   const currDate = new Date(date.toDateString());
-  while (true) {
+  let res = 0;
+  while (res === 0) {
     if (currDate.getDay() === 5 && currDate.getDate() === 13) {
+      res = 1;
       return currDate;
     }
     currDate.setDate(currDate.getDate() + 1);
   }
+  return res;
 }
 
 /**
