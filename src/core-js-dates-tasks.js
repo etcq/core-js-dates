@@ -31,15 +31,15 @@ function dateToTimestamp(date) {
  * Date(2023, 5, 1, 8, 20, 55) => '08:20:55'
  * Date(2015, 10, 20, 23, 15, 1) => '23:15:01'
  */
-function getTime(date) {
-  const a = new Date(date);
-  function check(elem) {
-    return elem < 10 ? `0${elem}` : elem;
-  }
-  const hours = check(a.getHours());
-  const minutes = check(a.getMinutes());
-  const seconds = check(a.getSeconds());
-  return `${hours}:${minutes}:${seconds}`;
+function getTime(/* date */) {
+  // const a = new Date(date);
+  // function check(elem) {
+  //   return elem < 10 ? `0${elem}` : elem;
+  // }
+  // const hours = check(a.getHours());
+  // const minutes = check(a.getMinutes());
+  // const seconds = check(a.getSeconds());
+  // return `${hours}:${minutes}:${seconds}`;
 }
 
 /**
@@ -53,33 +53,33 @@ function getTime(date) {
  * '03 Dec 1995 00:12:00 UTC' => 'Sunday'
  * '2024-01-30T00:00:00.000Z' => 'Tuesday'
  */
-function getDayName(/* date */) {
-  // switch (new Date(date).getUTCDay()) {
-  //   case 0: {
-  //     return 'Sunday';
-  //   }
-  //   case 1: {
-  //     return 'Monday';
-  //   }
-  //   case 2: {
-  //     return 'Tuesday';
-  //   }
-  //   case 3: {
-  //     return 'Wensday';
-  //   }
-  //   case 4: {
-  //     return 'Thursday';
-  //   }
-  //   case 5: {
-  //     return 'Friday';
-  //   }
-  //   case 6: {
-  //     return 'Saturday';
-  //   }
-  //   default: {
-  //     return date.getDay();
-  //   }
-  // }
+function getDayName(date) {
+  switch (new Date(date).getUTCDay()) {
+    case 0: {
+      return 'Sunday';
+    }
+    case 1: {
+      return 'Monday';
+    }
+    case 2: {
+      return 'Tuesday';
+    }
+    case 3: {
+      return 'Wensday';
+    }
+    case 4: {
+      return 'Thursday';
+    }
+    case 5: {
+      return 'Friday';
+    }
+    case 6: {
+      return 'Saturday';
+    }
+    default: {
+      return date.getDay();
+    }
+  }
 }
 
 /**
