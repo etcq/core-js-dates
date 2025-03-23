@@ -116,9 +116,9 @@ function getNextFriday(date) {
  * 2, 2024 => 29
  */
 function getCountDaysInMonth(month, year) {
-  const date = new Date(year, month, 0);
-  date.setUTCDate(date.geUTCtDate() - 1);
-  return date.getUTCDate();
+  const date = new Date(year, month, 1);
+  date.setDate(date.getDate() - 1);
+  return date.getDate();
 }
 
 /**
