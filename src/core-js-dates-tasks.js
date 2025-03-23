@@ -93,15 +93,15 @@ function getDayName(date) {
  * Date('2024-02-13T00:00:00Z') => Date('2024-02-16T00:00:00Z')
  * Date('2024-02-16T00:00:00Z') => Date('2024-02-23T00:00:00Z')
  */
-function getNextFriday(date) {
-  const nearFriday = new Date(date.toString());
-  if (nearFriday.getDay() === 5) {
-    nearFriday.setUTCDate(nearFriday.getDate() + 1);
-  }
-  while (nearFriday.getDay() !== 5) {
-    nearFriday.setUTCDate(nearFriday.getDate() + 1);
-  }
-  return nearFriday;
+function getNextFriday(/* date */) {
+  // const nearFriday = new Date(date.toString());
+  // if (nearFriday.getDay() === 5) {
+  //   nearFriday.setUTCDate(nearFriday.getDate() + 1);
+  // }
+  // while (nearFriday.getDay() !== 5) {
+  //   nearFriday.setUTCDate(nearFriday.getDate() + 1);
+  // }
+  // return nearFriday;
 }
 
 /**
